@@ -75,7 +75,7 @@ RUN cd /build/presto-cli && mvn -B -e -T 1C -DskipTests -DfailIfNoTests=false -D
 # Install prometheus-jmx agent
 RUN mvn dependency:get -Dartifact=io.prometheus.jmx:jmx_prometheus_javaagent:0.3.1:jar -Ddest=/build/jmx_prometheus_javaagent.jar
 
-FROM centos:7
+FROM registry.svc.ci.openshift.org/openshift/origin-v4.0:base
 
 RUN yum -y install --setopt=skip_missing_names_on_install=False \
         java-1.8.0-openjdk \
